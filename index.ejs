@@ -1,0 +1,32 @@
+<%- include('layout', { title: 'Home', content: `
+  <section class="py-4">
+    <div class="container">
+      <div class="p-4 rounded-3 border bg-light">
+        <h2 class="mb-1">Assignment No.3</h2>
+        <p class="mb-1"><strong>${course}</strong> — Summer 2025</p>
+        <p class="badge bg-warning text-dark">Deadline: ${deadline}</p>
+
+        <hr/>
+        <h5>Student Management System (Express + MongoDB + EJS)</h5>
+        <ul>
+          <li>CRUD operations (Add, List, View, Edit, Delete)</li>
+          <li>Dynamic routing (Express routes)</li>
+          <li>Server-side rendering (EJS templates)</li>
+          <li>Database integration (MongoDB Atlas via Mongoose)</li>
+        </ul>
+
+        <a href="/students" class="btn btn-primary me-2">View Students</a>
+        <a href="/students/add" class="btn btn-outline-primary">Add Student</a>
+      </div>
+
+      <div class="mt-4">
+        <h5>Submission Guidelines (Recap)</h5>
+        <ol>
+          <li><strong>GitHub</strong>: Push full project; share Repo + Live link (GitHub Pages for docs or Vercel for app).</li>
+          <li><strong>Vercel</strong>: Deploy this app; set <code>MONGODB_URI</code> in Project Environment Variables.</li>
+          <li><strong>PDF</strong>: Screenshots (Register/Login <em>optional if you add auth</em>, Student pages, mobile/desktop), explain auth (if present), MongoDB storing process, and filtering/search.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+`}) %>
