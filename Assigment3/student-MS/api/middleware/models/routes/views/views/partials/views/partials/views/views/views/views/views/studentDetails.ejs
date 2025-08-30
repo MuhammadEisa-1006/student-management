@@ -1,0 +1,22 @@
+<%- include('layout', { title: 'Student Details', content: `
+  <div class="container py-4">
+    <h3>Student Details</h3>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <p><strong>Name:</strong> ${student.name}</p>
+        <p><strong>Roll #:</strong> ${student.rollNumber}</p>
+        <p><strong>Email:</strong> ${student.email}</p>
+        <p><strong>Department:</strong> ${student.department}</p>
+        <p><strong>GPA:</strong> ${typeof student.gpa === 'number' ? student.gpa.toFixed(2) : '-'}</p>
+        <p><strong>Created:</strong> ${new Date(student.createdAt).toLocaleString()}</p>
+      </div>
+      <div class="card-footer d-flex gap-2">
+        <a class="btn btn-outline-primary" href="/students/edit/${student._id}">Edit</a>
+        <form method="post" action="/students/delete/${student._id}" onsubmit="return confirm('Delete this student?');">
+          <button class="btn btn-outline-danger" type="submit">Delete</button>
+        </form>
+        <a class="btn btn-secondary ms-auto" href="/students">Back</a>
+      </div>
+    </div>
+  </div>
+`}) %>

@@ -1,0 +1,180 @@
+/* ==========================
+   Color Palette & Utilities
+   Drop into public/css/custom.css
+   Replace hex values to customize
+   ========================== */
+
+/* Palette variables (semantic) */
+:root{
+  /* primary scale */
+  --primary-50:  #eef2ff;
+  --primary-100: #e0e7ff;
+  --primary-200: #c7d2fe;
+  --primary-300: #a5b4fc;
+  --primary-400: #7c93f8;
+  --primary-500: #6c8cff; /* main primary */
+  --primary-600: #4f6ef6;
+  --primary-700: #3457e6;
+  --primary-800: #203bd1;
+  --primary-900: #0b2aa8;
+
+  /* success / positive */
+  --success-50:  #ecfdf5;
+  --success-500: #2ecc71;
+
+  /* danger / error */
+  --danger-50:   #fff1f2;
+  --danger-500:  #ff5c74;
+
+  /* accent / warning */
+  --accent-50:   #fff9ec;
+  --accent-500:  #ffe08a;
+
+  /* neutrals / background / text */
+  --bg-900: #070812;
+  --bg-800: #0b0e1c;
+  --card:    #0f1628;
+  --muted:   #9aa3b2;
+  --text:    #e8ecf3;
+  --glass:   rgba(255,255,255,0.04);
+
+  /* borders & shadow */
+  --border:  rgba(255,255,255,0.04);
+  --shadow:  0 10px 24px rgba(3,6,23,0.6);
+}
+
+/* Base page colors */
+body {
+  background: linear-gradient(180deg, var(--bg-900), var(--bg-800)) fixed;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Card, nav, table backgrounds */
+.card, .navbar, .table, .table-responsive {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), var(--card));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+/* Headings */
+h1,h2,h3,h4 {
+  color: var(--text);
+}
+
+/* Primary button style */
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary-600), var(--primary-500));
+  border: none;
+  color: white;
+  padding: .5rem .9rem;
+  border-radius: .45rem;
+  box-shadow: 0 6px 16px rgba(76,97,255,0.18);
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(76,97,255,0.22);
+}
+
+/* Secondary / outline buttons */
+.btn-outline {
+  background: transparent;
+  color: var(--primary-200);
+  border: 1px solid rgba(108,140,255,0.18);
+}
+.btn-outline:hover {
+  background: rgba(108,140,255,0.06);
+}
+
+/* Success / Danger utility buttons */
+.btn-success {
+  background: linear-gradient(90deg, #29c66a, var(--success-500));
+  color: white;
+}
+.btn-danger {
+  background: linear-gradient(90deg, var(--danger-500), #ff3b58);
+  color: white;
+}
+
+/* Badges */
+.badge-primary {
+  background: var(--primary-500);
+  color: white;
+  padding: .25rem .5rem;
+  border-radius: .45rem;
+  font-weight: 600;
+}
+.badge-accent {
+  background: var(--accent-500);
+  color: #0b0d10;
+  padding: .24rem .5rem;
+  border-radius: .45rem;
+  font-weight: 600;
+}
+
+/* Table rows: subtle striped effect */
+.table tbody tr:nth-child(odd) td {
+  background: rgba(255,255,255,0.02);
+}
+.table tbody tr:hover td {
+  background: rgba(108,140,255,0.03);
+}
+
+/* Inputs & form controls */
+.form-control, .form-select {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: none;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-500);
+  outline: none;
+  box-shadow: 0 6px 18px rgba(108,140,255,0.12);
+}
+
+/* Links */
+a {
+  color: var(--primary-200);
+}
+a:hover { color: var(--primary-100); text-decoration: underline; }
+
+/* Small helper text */
+.text-muted {
+  color: var(--muted) !important;
+}
+
+/* Cards for student details / review */
+.detail-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+/* Success / error outline for review blocks */
+.review-correct { border-left: 4px solid var(--success-500); background: rgba(46,204,113,0.03); }
+.review-incorrect { border-left: 4px solid var(--danger-500); background: rgba(255,92,116,0.03); }
+
+/* Utility color text classes */
+.text-primary { color: var(--primary-200) !important; }
+.text-success { color: var(--success-500) !important; }
+.text-danger  { color: var(--danger-500) !important; }
+.text-accent  { color: var(--accent-500) !important; }
+
+/* Small shadowed card */
+.small-card {
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+}
+
+/* Responsive tweaks (optional) */
+@media (max-width: 576px) {
+  .btn-primary, .btn-outline { width: 100%; display: block; text-align: center; }
+}
+

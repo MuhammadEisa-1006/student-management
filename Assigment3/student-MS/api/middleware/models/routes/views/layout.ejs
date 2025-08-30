@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/nav') %>
+    <main>
+      <%- typeof body !== 'undefined' ? body : '' %>
+      <%- typeof content !== 'undefined' ? content : '' %>
+    </main>
+  </body>
+</html>

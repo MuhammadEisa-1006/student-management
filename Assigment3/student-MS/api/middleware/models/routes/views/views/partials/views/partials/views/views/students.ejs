@@ -1,0 +1,70 @@
+<%- include('layout', { title: 'Students', content: `
+  <div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h3 class="mb-0">Students</h3>
+      <a href="/students/add" class="btn btn-sm btn-primary">Add Student</a>
+    </div>
+
+    ${ (query && query.msg) ? `<div class="alert alert-success">${query.msg}</div>` : '' }
+
+    <form class="row g-2 mb-3" method="get" action="/students">
+      <div class="col-md-4">
+        <input type="text" class="form-control" name="search" placeholder="Search by name or department" value="${query.search || ''}">
+      </div>
+      <div class="col-md-3">
+        <input type="text" class="form-control" name="department" placeholder="Filter by department" value="${query.department || ''}">
+      </div>
+      <div class="col-md-2">
+        <select class="form-select" name="sort">
+          <option value="name" ${query.sort==='name'?'selected':''}>Sort by Name</option>
+          <option value="gpa" ${query.sort==='gpa'?'selected':''}>Sort by GPA</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-select" name="order">
+          <option value="asc" ${query.order==='asc'?'selected':''}>Ascending</option>
+          <option value="desc" ${query.order==='desc'?'selected':''}>Descending</option>
+        </select>
+      </div>
+      <div class="col-md-1 d-grid">
+        <button class="btn btn-dark" type="submit">Apply</button>
+      </div>
+    </form>
+
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Roll #</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>GPA</th>
+            <th>Created</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          ${students.length ? students.map(s => `
+            <tr>
+              <td><a href="/students/${s._id}">${s.name}</a></td>
+              <td>${s.rollNumber}</td>
+              <td>${s.email}</td>
+              <td>${s.department}</td>
+              <td>${typeof s.gpa === 'number' ? s.gpa.toFixed(2) : '-'}</td>
+              <td>${new Date(s.createdAt).toLocaleString()}</td>
+              <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" href="/students/edit/${s._id}">Edit</a>
+                <form class="d-inline" method="post" action="/students/delete/${s._id}" onsubmit="return confirm('Delete this student?');">
+                  <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          `).join('') : `
+            <tr><td colspan="7" class="text-center text-muted">No students found.</td></tr>
+          `}
+        </tbody>
+      </table>
+    </div>
+  </div>
+`}) %>
